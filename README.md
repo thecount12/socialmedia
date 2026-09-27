@@ -1,8 +1,9 @@
-# Lux in Social Media
+# Lux9 in Social Media
 
-A friend of mine wanted to make a single post deploy to multiple social media sites. I thought that was a great
-idea and more important. I don't wnat to go through the turmoil of dealing with every API. Luckily someone else
+A friend of mine wanted to make a single post deploy to many social media sites. I thought that was a great
+idea and more important. I don't want to go through the turmoil of dealing with every social API. Luckily someone else
 did that work.
+
 
 ## Buffer.com and lux9.dev
 
@@ -20,7 +21,7 @@ To get up and running you only need to do a few things.
 
 1. Create an account on buffer
 2. Create an API key: Seetings -> API -> Generate API key
-3. Conect a new channe: linkedin, mastadon, and instagram
+3. Conect a new channel: linkedin, mastadon, and instagram
 4. API documentation: https://developers.buffer.com/examples/create-draft-post.html
 
 Currently supports the three: linkedin, mastadon, and instagram. Its all I need for free tier
@@ -103,7 +104,6 @@ fun draftPost(channel, text, image_url) {
 	var media_metadata = ""; // instagram
 	if (cleanId == "6ab87246ea19ca0bdefd7b57") {
 		print "hit channel";
-		//media_metadata = "    metadata: { instagram: { postType: post } }\n";
 		media_metadata = "    metadata: { instagram: { type: post, shouldShareToFeed: true } }\n";
 	}
 
@@ -139,11 +139,20 @@ mutation CreateDraftPost {
 	return query;
 }
 ```
-I pass three things, the "channel" ID that I would keep in an array, the "text" message I want to send and
-an image URL. You kind of need that everytime if you are dealing with instagram and other social media tools. It must be
-a public available image.  
+I pass three things, the "channel" ID that I would keep in an array, the "text" message I want to send and an image URL. You kind of need that every time if you are dealing with instagram and other social media tools. It must be a public available image. Instagram is also weird. I had to create a filter for it
 
-That's it. I draft my messages "saveToDraft: true" before sending it out. 
+```
+var cleanId = strTrim(channel);
+	var media_metadata = ""; // instagram
+	if (cleanId == "6ab87246ea19ca0bdefd7b57") {
+		print "hit channel";
+		media_metadata = "    metadata: { instagram: { type: post, shouldShareToFeed: true } }\n";
+	}
+```
+
+I'm sure more of these would be needed as you add more channels.
+
+That's it. I draft my messages "saveToDraft: true" before sending it out.
 
 ### Future code adjustments
 

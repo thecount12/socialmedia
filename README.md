@@ -158,6 +158,6 @@ That's it. I draft my messages "saveToDraft: true" before sending it out.
 * To Schedule for a Specific Time: Switch the schedulingType: automatic layout field to schedulingType: custom, and append a standard ISO timestamp argument row (e.g., scheduledAt: "2026-10-01T15:00:00Z").
 * To Support Video or Reels: Simply switch the inner asset node array from nesting under image to standard multi-part payload syntax: assets: [{ video: { url: "..." } }].
 
-## local webserver 
+## Local webserver 
 
-This took a couple of hours to write. I could make a simple local webserver with a form field to post one message to all the channels you have configured. Or you could do that. Good luck!
+This took a couple of hours to write. I could make a simple local web server with a form field to post one message to all the channels configured in buffer. Or you could do that. Good luck!

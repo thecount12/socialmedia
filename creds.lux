@@ -1,0 +1,16 @@
+// Return app secret key or nil
+// Usage at bottom
+fun appSecret() {
+	if (fileExists(".env")) {
+		var creds = readFile(".env");
+		var parse_secret = strSplit(creds, "=");
+		var secret = strTrim(parse_secret[1]);
+		return secret;
+	}
+	return nil;
+}
+
+/*
+var app_secret = appSecret();
+print app_secret;
+*/

@@ -103,7 +103,6 @@ fun draftPost(channel, text, image_url) {
 	var cleanId = strTrim(channel);
 	var media_metadata = ""; // instagram
 	if (cleanId == "6ab87246ea19ca0bdefd7b57") {
-		print "hit channel";
 		media_metadata = "    metadata: { instagram: { type: post, shouldShareToFeed: true } }\n";
 	}
 
